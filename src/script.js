@@ -1,3 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Landing page loaded successfully!')
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     console.log('Landing page loaded successfully!')
+// });
