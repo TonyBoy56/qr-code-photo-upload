@@ -2,11 +2,19 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import open from 'open';
+import QRCode from 'qrcode'
+import { config } from 'dotenv';
+
+config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
-const port = 3000;
+const ipAddress = process.env.IP_ADDRESS;
+const port = process.env.port;
+
+// Load environment vars
+
 
 // Serve static files from the 'src' directory
 app.use(express.static(path.join(__dirname, 'src/')))
@@ -23,6 +31,7 @@ app.get('/', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    open(`http://localhost:${port}`)
-    console.log(`Server is running at http://localhost:${port}`)
+    open(`http://${ipAddress}:${port}`);
+    console.log(`Server is running at `);
+    console.log(`Server IP: ${ipAddress}`, typeof(ipAddress));
 });
