@@ -2,9 +2,10 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import open from 'open';
-import QRCode from 'qrcode'
+// import QRCode from 'qrcode'
 import { config } from 'dotenv';
 
+// Load 
 config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -13,9 +14,6 @@ const app = express();
 const ipAddress = process.env.IP_ADDRESS;
 const port = process.env.port;
 
-// Load environment vars
-
-
 // Serve static files from the 'src' directory
 app.use(express.static(path.join(__dirname, 'src/')))
 
@@ -23,11 +21,6 @@ app.use(express.static(path.join(__dirname, 'src/')))
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'src/index.html'))
 });
-
-// Example of an API endpoint
-// app.get('/api/data', (req, res) => {
-//     res.json({ message: 'Hello from the server!' });
-// });
 
 // Start the server
 app.listen(port, () => {
